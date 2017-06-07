@@ -30,7 +30,11 @@ class LoginController extends Controller
      */
     public function index()
     {
+<<<<<<< HEAD
         layout(false);
+=======
+
+>>>>>>> 3428c95221bd8803fc33b205568ebdae38f4e578
         $this->display(login);
     }
 
