@@ -30,7 +30,7 @@ class LoginController extends Controller
      */
     public function index()
     {
-
+        layout(false);
         $this->display(login);
     }
 
@@ -57,7 +57,9 @@ class LoginController extends Controller
             $condition['root_name']=I('post.root_name');
 //            $condition['root_password']=I('post.root_password','','md5');
             $condition['root_password']=I('post.root_password');
-            $user = M('roots')->where($condition)->find();
+
+
+            $user=M('roots')->where($condition)->find();
 
             if($user){
                 //用户名密码正确
@@ -67,7 +69,7 @@ class LoginController extends Controller
 
                 //跳转页面
 
-                $this->redirect('/admin/assess/');
+                $this->redirect('/admin/assess/boutique');
             }else{
                 //用户名密码错误
                 echo "<script> alert('用户名或密码错误，请重新输入');history.go(-1);</script>";
@@ -84,9 +86,9 @@ class LoginController extends Controller
     */
     public function logout(){
         //注销session
-        session('loginedName',null);
-        session('si_id',null);
-        $this->redirect('/Assess/login');
+        session('root_name',null);
+        session('root_id',null);
+        $this->redirect('/admin/login');
     }
 
 

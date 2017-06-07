@@ -13,6 +13,7 @@ class AssessController extends Controller
 
     //显示主页
     public function index(){
+
         $this->display(boutique);
     }
     //黑名单管理
@@ -29,27 +30,26 @@ class AssessController extends Controller
      * 作者：骆静静
      * 状态：完成
      * */
-    /**
-     *
-     */
+
     public function boutique(){
 //        layout(false);
         $map['up_num'] = array('gt',20);
         $map['if_show'] = 1;
-        $posts= M('posts')->where($map)->select();
+        $count= M('posts')->where($map)->count();
+
+        //2.设置（获取）每一页显示的个数
+        $pageSize=3;
+        //3.创建分页对象
+        $page=new \Think\Page($count,$pageSize);
+
+        $posts=M('posts')->where($map)->limit($page->firstRow.','.$page->listRows)->select();
+
         $this->assign('posts',$posts);
-        switch($posts['boss_deal']) {
-            case 0:
-                $type = '未推送';
-                break;
-            case 1:
-                $type = '已推送';
-                break;
-            default:
-                $type = 'error';
-                break;
-        }
-        $this->assign('type',$type);
+
+        $page->setConfig('prev','上一页');
+        $page->setConfig('next','下一页');
+
+        $this->assign('pages',$page->show());
 
         $this->display();
 
@@ -63,21 +63,21 @@ class AssessController extends Controller
         $condiction['posts_id']=$id;
         $condiction['boss_deal']=1;
         $result=M('posts')->save($condiction);
-       if($result==1){
-           echo <<<STR
+        if($result==1){
+            echo <<<STR
 				<script type="text/javascript">
 					alert('推送成功！');
                     window.location.href = "/admin/assess/boutique";
 				</script>
 STR;
-       }else{
-           echo <<<STR
+        }else{
+            echo <<<STR
 				<script type="text/javascript">
 					alert('推送失败');
                     window.location.href = "/admin/assess/boutique";
 				</script>
 STR;
-       }
+        }
 
 
     }

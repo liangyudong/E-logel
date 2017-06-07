@@ -42,6 +42,7 @@
 
     <!-- Theme CSS -->
     <link href="__PUBLIC__/assets/css/jquery.mmenu.css" rel="stylesheet" />
+    <link href="__PUBLIC__/assets/css/common.css" rel="stylesheet" />
 
     <!-- Page CSS -->
     <link href="__PUBLIC__/assets/css/style.css" rel="stylesheet" />
@@ -85,8 +86,8 @@
             <div class="userbox">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                     <div class="profile-info">
-                        <span class="name">易拉罐一号</span>
-                        <span class="role">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;管理员</span>
+                        <span class="name">{$_SESSION['root_name']}</span>
+                        <span class="role">管理员</span>
                     </div>
                     <i class="fa custom-caret"></i>
                 </a>
@@ -100,7 +101,7 @@
                             </div>
                         </li>
                         <li>
-                            <a href="/admin/login/index"><i class="fa fa-power-off"></i>退出登录</a>
+                            <a href="/admin/login/logout"><i class="fa fa-power-off"></i>退出登录</a>
                         </li>
                     </ul>
                 </div>
