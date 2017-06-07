@@ -23,15 +23,17 @@ use Think\Controller;
 class LoginController extends Controller
 {
 
+
     /*
      * 功能：后台登陆页面
      * 编写者：骆静静
      * 状态：已完成
      */
-    public function index()
+    public function login()
     {
+
         layout(false);
-        $this->display(login);
+        $this->display();
     }
 
     /*
@@ -55,8 +57,8 @@ class LoginController extends Controller
             //成功
             $condition = array();
             $condition['root_name']=I('post.root_name');
-//            $condition['root_password']=I('post.root_password','','md5');
-            $condition['root_password']=I('post.root_password');
+            $condition['root_password']=I('post.root_password','','md5');
+//            $condition['root_password']=I('post.root_password');
 
 
             $user=M('roots')->where($condition)->find();
@@ -88,7 +90,7 @@ class LoginController extends Controller
         //注销session
         session('root_name',null);
         session('root_id',null);
-        $this->redirect('/admin/login');
+        $this->redirect('/admin/login/login');
     }
 
 
