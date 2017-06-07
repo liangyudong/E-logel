@@ -1,0 +1,45 @@
+[ 2016-09-06T15:19:39+08:00 ] ::1 /index/index/index
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000014s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000358s ]
+
+[ 2016-09-06T15:41:50+08:00 ] ::1 /msg/list
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000013s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000350s ]
+NOTIC: [2] preg_match(): Unknown modifier 'l' D:\WWW\tptest\ThinkPHP\Library\Think\Route.class.php 第 61 行.
+ERR: 无法加载模块:Msg
+
+[ 2016-09-06T15:42:10+08:00 ] ::1 /msg/list/
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000010s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000324s ]
+NOTIC: [2] preg_match(): Unknown modifier 'l' D:\WWW\tptest\ThinkPHP\Library\Think\Route.class.php 第 61 行.
+ERR: 无法加载模块:Msg
+
+[ 2016-09-06T15:46:45+08:00 ] ::1 /msg/showadd
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000010s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000374s ]
+NOTIC: [8] Use of undefined constant MODULE_NAME - assumed 'MODULE_NAME' D:\WWW\tptest\ThinkPHP\Library\Think\View.class.php 第 168 行.
+NOTIC: [8] Use of undefined constant CONTROLLER_NAME - assumed 'CONTROLLER_NAME' D:\WWW\tptest\ThinkPHP\Library\Think\View.class.php 第 181 行.
+ERR: 模板不存在:./Application/MODULE_NAME/View/CONTROLLER_NAME/add.html
+
+[ 2016-09-06T15:47:58+08:00 ] ::1 /msg/showadd
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000011s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000352s ]
+NOTIC: [8] Use of undefined constant MODULE_NAME - assumed 'MODULE_NAME' D:\WWW\tptest\ThinkPHP\Library\Think\View.class.php 第 168 行.
+ERR: 模板不存在:./Application/home/View/index/add.html
+
+[ 2016-09-06T15:49:41+08:00 ] ::1 /msg/delete/3
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000014s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000426s ]
+
+[ 2016-09-06T23:36:25+08:00 ] ::1 /favicon.ico
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000013s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000371s ]
+ERR: 无法加载模块:Favicon
+
