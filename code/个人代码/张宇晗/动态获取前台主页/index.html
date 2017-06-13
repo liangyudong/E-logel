@@ -1,0 +1,323 @@
+
+<link rel="stylesheet" type="text/css" href="__PUBLIC__/css/lunbo.css">
+<script type="text/javascript" src="__PUBLIC__/js/jquery.DB_tabMotionBanner.min.js"></script>
+<div class="DB_tab25 hidden-xs">
+	<ul class="DB_bgSet">
+		<li style="display: none; background: rgb(102, 153, 153);"></li>
+		<li style="display: none; background: rgb(51, 153, 153);"></li>
+		<li style="display: list-item; background: rgb(51, 153, 153);"></li>
+	</ul>
+
+	<ul class="DB_imgSet" style="position: relative;">
+		<li onclick="javascript:window.location.href=content.html;;" style="position: absolute; display: none;">
+			<img class="DB_1_1" src="__PUBLIC__/images/index2.png" alt="" style="left: 20px; opacity: 1; display: block; top: 120px;">
+			<img class="DB_1_2" src="__PUBLIC__/images/index1.png" alt="" style="left: 20px; opacity: 1; display: block; top: 60px;">
+			<img class="DB_1_3" src="__PUBLIC__/images/bn_01.png" alt="" style="left: 300px; opacity: 1; display: block; top: 0px;">
+		</li>
+
+		<li onclick="javascript:window.location.href=content.html;;" style="position: absolute; display: none;">
+			<img class="DB_2_1" src="__PUBLIC__/images/index4.png" alt="" style="top: 60px; opacity: 1; display: block; left: 20px;">
+			<img class="DB_2_2" src="__PUBLIC__/images/index5.png" alt="" style="top: 160px; opacity: 1; display: block; left: 20px;">
+			<img class="DB_2_3" src="__PUBLIC__/images/index6.png" alt="" style="top: 0px; opacity: 1; display: block; left: 540px;">
+		</li>
+		<li onclick="javascript:window.location.href=content.html;;" style="position: absolute; display: list-item;">
+			<img class="DB_4_1" src="__PUBLIC__/images/bn_04.png" alt="" style="top: 0px; opacity: 1; display: block; left: 120px;">
+			<img class="DB_4_2" src="__PUBLIC__/images/bn32.png" alt="" style="top: 40px; opacity: 1; display: block; left: 540px;">
+			<img class="DB_4_3" src="__PUBLIC__/images/bn33.png" alt="" style="top: 170px; opacity: 1; display: block; left: 640px;">
+		</li>
+	</ul>
+
+	<div class="DB_menuWrap">
+		<ul class="DB_menuSet">
+			<li class=""><img src="__PUBLIC__/images/btn_off.png" alt=""></li>
+			<li class=""><img src="__PUBLIC__/images/btn_off.png" alt=""></li>
+			<li class="select"><img src="__PUBLIC__/images/btn_on.png" alt=""></li>
+		</ul>
+		<div class="DB_next" style="display: none;"><img src="__PUBLIC__/images/nextArrow.png" alt="NEXT"></div>
+		<div class="DB_prev" style="display: none;"><img src="__PUBLIC__/images/prevArrow.png" alt="PREV"></div>
+	</div>
+
+</div>
+<script type="text/javascript">
+    $('.DB_tab25').DB_tabMotionBanner({
+        key:'b28551dd',
+        autoRollingTime:8000,
+        bgSpeed:300,
+        motion:{
+            DB_1_1:{left:-50,opacity:0,speed:1000,delay:500},
+            DB_1_2:{left:-50,opacity:0,speed:1000,delay:1000},
+            DB_1_3:{left:100,opacity:0,speed:1000,delay:1500},
+            DB_2_1:{top:10,opacity:0,speed:1000,delay:500},
+            DB_2_2:{top:20,opacity:0,speed:1000,delay:1000},
+            DB_2_3:{top:40,opacity:0,speed:1000,delay:1500},
+            DB_3_1:{left:-50,opacity:0,speed:1000,delay:500},
+            DB_3_2:{top:40,opacity:0,speed:1000,delay:1000},
+            DB_3_3:{top:0,opacity:0,speed:1000,delay:1500},
+            DB_4_1:{top:40,opacity:0,speed:1000,delay:500},
+            DB_4_2:{top:0,opacity:0,speed:1000,delay:1000},
+            DB_4_3:{top:240,opacity:0,speed:1000,delay:1500},
+            end:null
+        }
+    })
+</script><div class="aw-container-wrap aw-container-wrap">
+	<div class="container">
+		<div class="row">
+			<div class="aw-content-wrap clearfix">
+				<div class="col-sm-12 col-md-9 aw-main-content">
+
+					<!-- 新消息通知 -->
+					<div class="aw-mod aw-notification-box hide" id="index_notification">
+						<div class="mod-head common-head">
+							<h2>
+								<span class="pull-right"><a href="http://www.tabuzhe.com/account/setting/privacy/#notifications" class="text-color-999"><i class="icon icon-setting"></i> 通知设置</a></span>
+								<i class="icon icon-bell"></i>新通知<em class="badge badge-important" name="notification_unread_num"></em>
+							</h2>
+						</div>
+						<div class="mod-body">
+							<ul id="notification_list"></ul>
+						</div>
+						<div class="mod-footer clearfix">
+							<a href="javascript:;" onclick="AWS.Message.read_notification(false, 0, false);" class="pull-left btn btn-mini btn-gray">我知道了</a>
+							<a href="http://www.tabuzhe.com/notifications/" class="pull-right btn btn-mini btn-success">查看所有</a>
+						</div>
+					</div>
+					<!-- end 新消息通知 -->
+					<div class="ad-all clearfix hidden-xs hidden-sm">
+						<div id="qiandao">
+							<div class="pull-right" style="color:#999;">
+								<b>站内统计</b>
+								<span style="padding:0 0 0 10px;">会员：{$users_num} / 激活：{$users_num}</span>
+								<span style="padding:0 0 0 10px;">话题：{$labels_num}</span>
+								<span style="padding:0 0 0 10px;">文章：{$posts_num}</span>
+							</div>
+							<h2 class="hidden-xs"><i class="icon icon-users"></i>热门话题 </h2>
+							<div>
+								<volist name="lables" id="vo">
+									<dd style="float: left;">
+										<a href="__APP__/home/list/index/id/{$vo.posts_label_id}" style="width: auto;height: auto;margin-left:30px;">{$vo.posts_label_name}</a>
+									</dd>
+								</volist>
+							</div>
+						</div>
+					</div>
+					<script type="text/javascript">
+                        $(document).ready(function()
+                        {
+                            $('.xboxs').hover(function()
+                            {
+                                $(this).find(".aw-user-name img").css("background","red");
+                                $(this).find('img').animate({width:54, marginTop:-5, marginLeft:-2}, 500);
+                            }, function()
+                            {
+                                $(this).find(".aw-user-name img").css("background","");
+                                $(this).find('img').animate({width:50, marginTop:0, marginLeft:0},300);
+                            });
+                        });
+					</script>					<!-- tab切换 -->
+					<ul class="nav nav-tabs aw-nav-tabs active hidden-xs">
+						<li class="active"><a href="">热门</a></li>
+					</ul>
+					<!-- end tab切换 -->
+
+
+					<div class="aw-mod aw-explore-list">
+						<div class="mod-body">
+							<div class="aw-common-list">
+								<volist name="posts" id="vo">
+									<div class="aw-item" id="aw-item_0">
+										<div class="aw-user-imgs">
+											<a class="aw-user-name aw-user-name-o hidden-xs" data-id="3" href="__APP__/home/personal/index/id/{$vo.users_id}" rel="nofollow"><img src="__PUBLIC__/images/03_avatar_max.jpg" alt="">
+												<?php
+															$tabid=$vo[users_id];
+															$tmp['users_id']=$tabid;
+															$tabName=M('users')->where($tmp)->field('users_name')->find();
+													echo "【".$tabName['users_name']."】";
+														?>
+												<i class="icon icon-v"></i>
+											</a>
+											<div class="userline hidden-xs" id="userline_0"></div>
+										</div>
+										<div class="aw-question-content" id="aw-question-content_0">
+											<div class="pull-right">
+											</div>
+											<p>
+			<span class="text-color-999">
+				发起
+				{$vo.posts_time}
+				(1 人关注)
+			</span>
+												<span class="spanb_b">热</span>
+											</p>
+											<h4>
+												<a class="listlink" href="__APP__/home/list/index/id/{$vo.posts_label_id}">
+													<?php
+								$tabid=$vo[posts_label_id];
+								$tmp['posts_label_id']=$tabid;
+				 				$tabName=M('lables')->where($tmp)->field('posts_label_name')->find();
+													echo "【".$tabName['posts_label_name']."】";
+													?>
+												</a>
+												<a  href="__APP__/home/list/content/id/{$vo.posts_id}">{$vo.posts_title}</a>
+												<a class="aw-question-topics" href="__APP__/home/list/index/id/{$vo.posts_label_id}"><?php
+				$tabid=$vo[posts_label_id];
+				$tmp['posts_label_id']=$tabid;
+				 $tabName=M('lables')->where($tmp)->field('posts_label_name')->find();
+													echo $tabName['posts_label_name'];
+
+													?></a>
+											</h4>
+
+											<div class="inner clearfix">
+												<p class="question-text" style=" color: #666; font-size:13px;">
+													{$vo.posts_intr}
+												</p>
+												<div class="inners clearfix">
+													<div class="row">
+														<div class="shibox shiboximg col-xs-4 col-sm-4 col-md-4">
+															<a href="__PUBLIC__/images/161459zbs85ddtegg88lso.png" target="_blank" data-fancybox-group="thumb" rel="lightbox">
+																<img class="img-polaroidst img-responsive" src="__PUBLIC__/images/161459zbs85ddtegg88lso.png" alt="" original="" style="display: block;">
+															</a>
+														</div>
+													</div>
+												</div>
+												<div class="awfo-box">
+													<a href="__APP__/home/personal/index/id/{$vo.users_id}" class="aw-user-name">
+														<?php
+															$tabid=$vo[users_id];
+															$tmp['users_id']=$tabid;
+															$tabName=M('users')->where($tmp)->field('users_name')->find();
+														echo "【".$tabName['users_name']."】";
+														?>
+													</a>
+													<span class="text-color-9999 idown">发起了话题
+					&nbsp;&nbsp;&nbsp;<i class="icon icon-eye fz16"></i> {$vo.view_num} 浏览
+					&nbsp;&nbsp;<i class="icon icon-comment"></i> {$vo.up_num} <em>点赞</em>
+				</span>
+													<span class="pull-right hidden-xs contribute">
+				<a href="__APP__/home/list/content/id/{$vo.posts_id}" class="pull-right text-color-999">评论</a>
+				</span>
+												</div>
+
+											</div>
+
+										</div>
+									</div>
+								</volist>
+
+
+								<script>
+                                    $(document).ready(function(){
+                                        var foxh;
+                                        $('.shibox img').hover(function() {
+                                            foxh=$(this).height()-150;
+                                            $(this).css({"transition":"1s","-webkit-transform":"translateY(-"+foxh+"px)"});
+                                        }, function() {
+                                            $(this).css("-webkit-transform","translateY(0)");
+                                        });
+                                    });
+								</script>
+
+							</div>
+						</div>
+
+						<div class="mod-footer">
+						</div>
+					</div>
+				</div>
+
+				<!-- 侧边栏 -->
+				<div class="col-sm-12 col-md-3 aw-side-bar hidden-xs hidden-sm">
+					<div class="user-qiandaobox clearfix">
+						<ul class="qian-box">
+							<dt class="act"><a href="javascript:;" onclick="AWS.ajax_request(G_BASE_URL + &#39;/points/ajax/send_qiandao/&#39;, &#39;uid=&#39;);">签到</a></dt>
+							<dd>
+								<p>2017年05月18日</p>
+								<p>漏签<span>0</span>天</p>
+							</dd>
+						</ul>
+					</div>					<div class="aw-mod user-home clearfix">
+					<div class="mod-head">
+						<h2>您还没有登录！</h2>
+					</div>
+					<ul>
+						<li class="user-bg-img">
+							<img src="__PUBLIC__/images/avatar-max-img.png" alt="未登录" title="未登录">
+						</li>
+						<li>
+							<p class="text-color-999" style="text-align:left;text-indent:2em">E-logel是一个分享学习信息的网站,通过它您可以分享你的学习经验帮助其他人,也可以及时了解最新的信息帮助你的学习	</p>
+						</li>
+						<!--<li>
+                        <ul class="user-home-question clearfix">
+                            <li><a href="http://www.tabuzhe.com/m/login/" class="btn btn-mini btn-primary btn-normal">登录</a></li>
+                            <li></li>
+                        </ul>
+                        </li>-->
+					</ul>
+				</div>										<div class="aw-mod aw-text-align-justify">
+					<div class="mod-head">
+						<a href="" class="pull-right">更多 &gt;</a>
+						<h3>热门圈子</h3>
+					</div>
+					<div class="mod-body">
+					</div>
+				</div>
+					<div class="aw-mod aw-text-align-justify"></div>
+					<div class="aw-mod aw-text-align-justify">
+						<div class="mod-head">
+							<a href="" class="pull-right">更多 &gt;</a>
+							<h3>热门用户</h3>
+						</div>
+						<div class="mod-body">
+						</div>
+					</div>
+					<div class="aw-mod aw-text-align-justify fixedffs" id="saybox"></div>
+					<script type="text/javascript">
+                        $(function(){
+                            var scrtime;
+                            $("#quotation").hover(function(){
+                                clearInterval(scrtime);
+
+                            },function(){
+
+                                scrtime = setInterval(function(){
+                                    var obj = $('#quotation ul li').last();
+                                    obj.hide();
+                                    $('#quotation ul').prepend(obj);
+                                    $('#quotation ul li').first().slideDown(500);
+                                },5000);
+
+                            }).trigger("mouseleave");
+
+                            var fixfox="fixedffs";
+                            var rollSet = $('#saybox');// 检查对象，#sidebar-tab是要随滚动条固定的ID，可根据需要更改
+                            var offset = rollSet.offset();
+                            $(window).scroll(function () {
+// 检查对象的顶部是否在游览器可见的范围内
+                                var scrollTop = $(window).scrollTop();
+                                if(offset.top < scrollTop && $(document).scrollTop() + $(window).height() < $(document).height()){
+                                    rollSet.addClass(fixfox);
+                                }else{
+                                    rollSet.removeClass(fixfox);
+                                }
+                            });
+                        });
+					</script>
+					<div id="tabuzhead" class="hidden-xs hidden-sm fixedff">
+						<!--<div class="tabuzheadbox"></div>-->
+					</div>
+					<script type="text/javascript">
+                        $(function() {
+                            var fixfox="fixedff";
+                            var rollSet = $('#tabuzhead');// 检查对象，#sidebar-tab是要随滚动条固定的ID，可根据需要更改
+                            var offset = rollSet.offset();
+                            $(window).scroll(function () {
+// 检查对象的顶部是否在游览器可见的范围内
+                                var scrollTop = $(window).scrollTop();
+                                if(offset.top < scrollTop + 380){
+                                    rollSet.addClass(fixfox);
+                                }else{
+                                    rollSet.removeClass(fixfox);
+                                }
+                            });
+                        });
+					</script>				</div>

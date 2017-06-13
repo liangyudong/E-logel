@@ -68,9 +68,13 @@ class AssessController extends Controller
       * */
     public function freedeal(){
         $id=I('get.id');
-        $condiction['users_ifon']=0;
+//        var_dump($id);
         $condiction['users_id']=$id;
-        $result=M('users')->save($condiction);
+        $condiction1['users_ifon']=0;
+//        var_dump($condiction);
+        $result=M('users')->where($condiction)->save($condiction1);
+
+//        var_dump($result);
         if($result==1){
             echo <<<STR
 				<script type="text/javascript">					
@@ -100,14 +104,14 @@ STR;
         if($result==1){
             echo <<<STR
 				<script type="text/javascript">					
-                    window.location.href = "/admin/assess/appeal";
+                    window.location.href = "/admin/assess/blackList";
 				</script>
 STR;
         }else{
             echo <<<STR
 				<script type="text/javascript">
 					alert('操作失败');
-                    window.location.href = "/admin/assess/appeal";
+                    window.location.href = "/admin/assess/blackList";
 				</script>
 STR;
         }
@@ -154,9 +158,11 @@ STR;
      * */
 public function nodeal(){
     $id=I('get.id');
-    $condiction['users_ifon']=2;
     $condiction['users_id']=$id;
-    $result=M('users')->save($condiction);
+    $condiction1['users_ifon']=2;
+
+    $result=M('users')->where($condiction)->save($condiction1);
+
     if($result==1){
         echo <<<STR
 				<script type="text/javascript">					
@@ -179,9 +185,15 @@ STR;
      * */
     public function deal(){
         $id=I('get.id');
-        $condiction['users_ifon']=1;
         $condiction['users_id']=$id;
-        $result=M('users')->save($condiction);
+
+        $condiction1['users_ifon']=1;
+//        var_dump($condiction);
+        echo "处理被投诉用户";
+        $result=M('users')->where($condiction)->save($condiction1);
+//        var_dump($result);
+
+
         if($result==1){
             echo <<<STR
 				<script type="text/javascript">					
@@ -234,6 +246,7 @@ STR;
         $condiction['posts_id']=$id;
         $condiction['boss_deal']=1;
         $result=M('posts')->save($condiction);
+
         if($result==1){
             echo <<<STR
 				<script type="text/javascript">
@@ -286,13 +299,13 @@ STR;
     public function getPost(){
 //         layout(false);
         $db = M('posts');
-        $count=$db->where("(boss_deal <> 2 OR if_show <> 0) AND charge_num>15")->count();
+        $count=$db->where("(boss_deal <> 2 AND if_show <> 0) AND charge_num>15")->count();
 
         //2.设置（获取）每一页显示的个数
         $pageSize=6;
         //3.创建分页对象
         $page=new \Think\Page($count,$pageSize);
-        $allposts = $db->where("(boss_deal <> 2 OR if_show <> 0) AND charge_num>15")->limit($page->firstRow.','.$page->listRows)->select();
+        $allposts = $db->where("(boss_deal <> 2 AND if_show <> 0) AND charge_num>15")->limit($page->firstRow.','.$page->listRows)->select();
         $this->assign("posts",$allposts);
 
 
@@ -307,39 +320,61 @@ STR;
      * 功能：帖子删除
      * 编写者：田源
      * 状态：已完成
+     * 修改：骆静静
      */
-    public function delete(){
-        $id=I('get.id');
+    public function delete()
+    {
+        $id = I('get.id');
         // var_dump($id);
         $db = M('posts');
-        // $result = $db->delete($id);
+        $condiction['posts_id'] = $id;
+        $condiction['if_show'] = 0;
+        $result = $db->save($condiction);
         // $result = $db->where("posts_id = $id")->setField('if_show',1);
-        if($result){
-            $this->redirect('getPost');
-        }
-        else{
-            $this->error('删除失败！','getPost',2);
+        if ($result == 1) {
+            echo <<<STR
+				<script type="text/javascript">
+					alert('删除成功！');
+                    window.location.href = "/admin/assess/getPost";
+				</script>
+STR;
+        } else {
+            echo <<<STR
+				<script type="text/javascript">
+					alert('删除失败');
+                    window.location.href = "/admin/assess/getPost";
+				</script>
+STR;
         }
     }
     /*
      * 功能：帖子忽略
      * 编写者：田源
      * 状态：已完成
+     *  修改：骆静静
      */
     public function postsIgnore(){
         $id=I('get.id');
         // var_dump($id);
         $db = M('posts');
-
-        $result = $db->where("posts_id = $id")->setField('boss_deal',2);
-
-        if ($result) {
-            $this->redirect('getPost');
+        $condiction['posts_id']=$id;
+        $condiction1['boss_deal']=2;
+        $result = $db->where($condiction)->save($condiction1);
+        if ($result == 1) {
+            echo <<<STR
+				<script type="text/javascript">
+					alert('忽略成功！');
+                    window.location.href = "/admin/assess/getPost";
+				</script>
+STR;
+        } else {
+            echo <<<STR
+				<script type="text/javascript">
+					alert('忽略失败');
+                    window.location.href = "/admin/assess/getPost";
+				</script>
+STR;
         }
-        else{
-            $this->error('忽略失败！','getPost',2);
-        }
-
     }
     /*
        * 功能：添加吧务
