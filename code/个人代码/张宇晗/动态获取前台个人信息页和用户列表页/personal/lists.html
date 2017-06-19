@@ -1,0 +1,150 @@
+<div class="aw-container-wrap">
+	<div class="container">
+		<div class="row">
+			<div class="aw-content-wrap clearfix">
+				<div class="col-sm-12 col-md-9 aw-main-content">
+					<div class="aw-mod">
+						<div class="mod-head common-head">
+							<h2><i class="icon icon-users"></i> 用户榜</h2>
+						</div>
+						<div class="hidden-xs" style="margin:10px 0;">
+							<ul class="nav nav-tabs">
+								<li class="active"><li class="active"><a href="__APP__/#overview" id="page_overview" data-toggle="tab"><i class="icon icon-circle-down"></i> 积分</a></li>
+
+
+							</ul>
+						</div>
+						<div class="mod-body aw-people-list" id="overview">
+							<volist name="points" id="vo">
+							<div class="aw-item">
+
+								<a class="aw-user-img aw-border-radius-5" href="__APP__/home/personal/index2/id2/{$vo.users_id}">
+									<img alt="" src="__PUBLIC__/images/03_avatar_max.jpg" width="50px" height="50px">
+								</a>
+								<p class="text-color-999 title">
+									<a href="__APP__/home/personal/index2/id2/{$vo.users_id}" class="aw-user-name">{$vo.users_name}</a>
+																	</p>
+								<p class="text-color-999 signature"></p>
+								<div class="meta">
+									<span><i class="icon icon-prestige"></i>威望 <b><?php
+									$tmp=$vo[users_sum]*3+$vo[comments_num]*2;
+									echo $tmp;
+									?>
+									</b></span>
+									<span><i class="icon icon-score"></i>积分 <b><?php
+									$tmp2=$vo[users_sum]*2;
+									echo $tmp2;
+									?></b></span>									<span><i class="icon icon-agree"></i>赞同 <b>0</b></span>
+									<span><i class="icon icon-thank"></i>感谢 <b>0</b></span>
+									<span><i class="icon icon-user2"></i>粉丝 <b>3</b></span>
+
+									<a href="__APP__/home/personal/focus/id/{$vo.users_id}" style="margin-right: 20px;" class="pull-right aw-icon-thank-tips text-color-999" data-original-title="<?php
+										$tabid=$vo[users_id];
+										$tmp3['users_id2']=$tabid;
+										$tmp3['users_id']=$id;
+										$tabName=M('attention_users')->where($tmp3)->select();
+											if($tabName)
+											{
+											echo '取消关注';
+									}
+									else{
+									echo '关注';
+									}
+									?>" data-toggle="tooltip" title="" data-placement="bottom">
+										<?php
+										$tabid=$vo[users_id];
+										$tmp1['users_id2']=$tabid;
+										$tmp1['users_id']=$id;
+										$tabName=M('attention_users')->where($tmp1)->select();
+										if($tabName)
+										{
+											echo "取消关注";
+										}
+										else{
+										echo "关注";
+										}
+										?>
+									</a>
+
+									<!--<span><i class="icon icon-beat"></i>签到 <b>0</b></span>-->
+								</div>
+
+
+															</div>
+
+							</volist>
+					</div>
+				</div>
+				</div>
+				<div class="col-sm-12 col-md-3 aw-side-bar hidden-xs hidden-sm active">
+					<div class="aw-mod side-nav">
+						<div class="mod-body">
+							<ul>
+																<li><a class="active" href="./用户列表 - TABUZHE_files/用户列表 - TABUZHE.html">全部</a></li>
+																<li><a href="http://www.tabuzhe.com/people/group_id-100">专栏用户</a></li>
+																							</ul>
+						</div>
+					</div>
+					
+					<div class="aw-mod side-nav">
+						<div class="mod-body">
+							<ul>
+															</ul>
+						</div>
+					</div>
+
+					<!-- <div class="aw-mod people-sort">
+						<div class="mod-body">
+							<input type="text" name="" placeholder="按擅长圈子搜索..." class="form-control" />
+							<i class="icon icon-down"></i>
+						</div>
+					</div> -->
+
+
+<script type="text/javascript">
+$(function() {
+var fixfox="fixedff";
+var rollSet = $('#tabuzhead');// 检查对象，#sidebar-tab是要随滚动条固定的ID，可根据需要更改
+var offset = rollSet.offset();
+$(window).scroll(function () {
+// 检查对象的顶部是否在游览器可见的范围内
+var scrollTop = $(window).scrollTop();
+if(offset.top < scrollTop){
+rollSet.addClass(fixfox);
+}else{
+rollSet.removeClass(fixfox);
+}
+});
+});
+</script>				</div>
+			</div>
+		</div>
+	</div>
+</div>
+</div>
+<script>
+function get_hot_posts(day)
+{
+	$('#hot_question_list').html('<p style="padding: 15px 0" align="center"><img src="' + G_STATIC_URL + '/common/loading_b.gif" alt="" /></p>');
+	if(day==7){
+		var url = G_BASE_URL + '/shangke/ajax/list_shangke/per_page-5'
+	}else{
+		var url = G_BASE_URL + '/shangke/ajax/list_shangke_m/per_page-5'
+	}
+	$.get(url, function (response)
+	{
+		if ($.trim(response) != '')
+		{
+			$('#hot_question_list').html(response);
+		}
+		else
+		{
+			$('#hot_question_list').html('<p style="padding: 15px 0" align="center">' + _t('暂无') + '</p>');
+		}
+	});
+}
+$(document).ready(function () {		
+	AWS.load_list_view(G_BASE_URL + '/shangke/ajax/list_read/', $('#c_all_more'), $('#c_all_list'),2);
+	$('#hot_question_control li.active a').click();
+});
+</script>

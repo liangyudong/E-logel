@@ -1,0 +1,244 @@
+<style>
+    .mod-head1 {
+        position: relative;
+        min-height: 140px;
+        padding: 20px 20px 20px 135px;
+        border-bottom: 1px solid #e6e6e6;
+    }
+    .mod-body{
+        margin-left: 20px;
+        padding-top: 20px;
+    }
+    .mod-head{
+        margin-left: 20px;
+    }
+    .list-page .current {
+        margin: 0 5px;
+        padding: 2px 7px;
+        background: #34495e;
+        border: 1px solid #34495e;
+        color: #fff;
+    }
+    .list-page a {
+        margin: 0 5px;
+        padding: 2px 7px;
+        border: 1px solid #ccc;
+        background: #f3f3f3;
+    }
+    a {
+        cursor: pointer;
+        color: #155faa;
+    }
+    </style>
+<div class="aw-container-wrap">
+    <div class="container">
+        <div class="row">
+            <div class="aw-content-wrap clearfix">
+                <div class="col-sm-12 col-md-9 aw-main-content">
+                    <!-- 用户数据内容 -->
+                    <div class="aw-mod aw-user-detail-box">
+                        <div class="mod-head1 uc_top_bg">
+                            <img class="avatar-img img-circle" style="position: absolute;left: 20px;top: 20px;" src="__PUBLIC__/images/03_avatar_max.jpg" alt="埃菲尔铁塔">
+                            <span class="pull-right operate">
+                                                            </span>
+                            <h1 style="color:#fff;">{$user_name} <i class="icon-v " title="个人认证"></i></h1>
+                            <h1 style="color:#fff;">个人等级: {$level_id}</h1>
+                            <p class="text-color-000"></p>
+                            <p class="aw-user-flag">
+                            </p>
+                        </div>
+                        <div class="mod-body">
+                            <div class="meta">
+                                <span><i class="icon icon-score"></i> 积分 : <em class="aw-text-color-orange">
+                                    <?php
+									$tmp2=$users_sum*2;
+									echo $tmp2;
+									?>
+                                </em></span>
+                                <span><i class="icon icon-agree"></i> 赞同 : <em class="aw-text-color-orange">0</em></span>
+                            </div>
+
+                        </div>
+                        <div class="mod-footer">
+                            <ul class="nav nav-tabs aw-nav-tabs">
+                                <li class="active"><a href="__APP__/#overview" id="page_overview" data-toggle="tab">概述</a></li>
+                                <li><a href="__APP__/#detail" id="page_detail" data-toggle="tab">详细资料</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <!-- end 用户数据内容 -->
+
+                    <div class="aw-user-center-tab">
+                        <div class="tab-content">
+                            <div class="tab-pane active" id="overview">
+                                <!-- 评论 -->
+                                <div class="aw-mod">
+                                    <div class="mod-head">
+                                        <h3><a class="pull-right aw-more-content" href="javascript:;" onclick="$(&#39;#page_answers&#39;).click();">更多 &gt;&gt;</a>评论</h3>
+                                    </div>
+                                    <div class="mod-body">
+                                        <div class="aw-profile-answer-list">
+                                            <p class="padding10 text-center">
+                                            <volist name="comment" id="v1">
+                                                <div class="mod-head">
+                                                    <h4><a  href="__APP__/home/post/index/id/{$v1.par_comments_id}">
+                                                        {$v1.comments_content}</a></h4>
+
+                                                </div>
+                                                <div class="mod-body">
+                                                    <form action="__APP__/home/personal/delete/">
+                                                        <input type="hidden" name="delete" value="{$v1.comments_id}">
+                                                        <a href="__APP__/home/personal/delete/delete/{$v1.comments_id}" style="margin-right: 20px;" class="pull-right aw-icon-thank-tips text-color-999" data-original-title="删除" data-toggle="tooltip" title="" data-placement="bottom">
+                                                            删除 </a>&nbsp;&nbsp;
+                                                        <span class="aw-hide-txt">o <?php
+                                                        if($v1['up_num']==0)
+                                                        {
+                                                        echo '0';
+                                                        }
+                                                         ?>{$v1.up_num} 次<em>点赞</em>  &nbsp; o {$v1.comments_time}</span>
+                                                    </form></div>
+                                        <hr/>
+                                            </volist>
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div style="text-align:center;margin:0 auto;" class="list-page">{$pages}</div>
+                                <hr/>
+                                <!-- end 评论 -->
+
+                                <!-- 文章 -->
+                                <div class="aw-mod">
+                                    <div class="mod-head">
+                                        <h3><a class="pull-right aw-more-content" href="javascript:;" onclick="$(&#39;#page_questions&#39;).click();">更多 &gt;&gt;</a>文章</h3>
+                                    </div>
+                                    <div class="mod-body">
+                                        <div class="aw-profile-publish-list">
+                                            <volist name="posts" id="vo">
+                                            <div class="aw-item">
+                                                <div class="mod-head">
+                                                    <h4><a  href="__APP__/home/list/content/id/{$vo.posts_id}"><?php
+								$tabid=$vo[posts_label_id];
+								$tmp['posts_label_id']=$tabid;
+				 				$tabName=M('lables')->where($tmp)->field('posts_label_name')->find();
+                                                        echo "【".$tabName['posts_label_name']."】";
+                                                        ?>{$vo.posts_title}</a></h4>
+
+                                                </div>
+                                                <div class="mod-body">
+                                                    <form action="__APP__/home/personal/delete2/">
+                                                        <input type="hidden" name="delete" value="{$vo.posts_id}">
+                                                        <a href="__APP__/home/personal/delete2/delete/{$vo.posts_id}" style="margin-right: 20px;" class="pull-right aw-icon-thank-tips text-color-999" data-original-title="删除" data-toggle="tooltip" title="" data-placement="bottom">
+                                                            删除 </a>
+                                                         &nbsp;&nbsp;
+                                                        <span class="aw-hide-txt">
+                                                            <?php
+                                                        if($vo['view_num']==0)
+                                                        {
+                                                        echo '0';
+                                                        }
+                                                         ?>{$vo.view_num} 次浏览 &nbsp;o
+                                                            <?php
+                                                        if($vo['view_num']==0)
+                                                        {
+                                                        echo '0';
+                                                        }
+                                                         ?>{$vo.up_num} 次<em>点赞</em>  &nbsp; o {$vo.posts_time}</span>
+                                                    </form></div>
+                                            </div>
+                                                <hr/>
+                                            </volist>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div style="text-align:center;margin:0 auto;" class="list-page">{$pages2}</div>
+                                <hr/>
+                                <!-- end 发问 -->
+
+
+                            </div>
+
+                            <div class="tab-pane" id="detail">
+                                <div class="aw-mod">
+                                    <div class="mod-head">
+                                        <h3>详细资料</h3>
+                                    </div>
+                                    <div class="mod-body aw-user-center-details">
+                                        <dl>
+                                            <dt><span>个人成就:</span></dt>
+                                            <dd>
+                                                <p class="meta">
+                                                    <span><i class="icon icon-score"></i>积分: <em class="aw-text-color-orange">
+                                                        <?php
+									                $tmp2=$users_sum*2;
+									                echo $tmp2;
+									                ?></em></span>
+                                                    <span><i class="icon icon-agree"></i>评论: <em class="aw-text-color-orange">{$users_comment}</em></span>
+                                                    <span><i class="icon icon-agree"></i>address: <em class="aw-text-color-orange">{$users_address}</em></span>
+                                                </p>
+                                            </dd>
+                                        </dl>
+
+
+
+                                        <dl>
+                                            <dt><span>最后活跃:</span></dt>
+                                            <dd>{$date}</dd>
+                                        </dl>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 侧边栏 -->
+                <div class="col-sm-12 col-md-3 aw-side-bar">
+                    <div class="aw-mod people-following">
+                        <div class="mod-body">
+                            <a onclick="$(&#39;#page_focus&#39;).click();$(&#39;#focus .aw-tabs ul li&#39;).eq(0).click();$.scrollTo($(&#39;#focus&#39;).offset()[&#39;top&#39;], 600, {queue:true})" class="pull-right font-size-12">更多 &gt;&gt;</a>
+                            <span>
+                                关注 <em class="aw-text-color-blue">{$num}</em> 人                            </span>
+                            <p>
+                                <volist name="users2" id="v1">
+                                    <a  data-id="2" href="__APP__/home/personal/index2/id2/{$v1.users_id2}"
+                                        data-original-title="<?php
+                                       $tabid=$v1[users_id2];
+                                       $tmp2['users_id']=$tabid;
+                                    $tabName=M('users')->where($tmp2)->field('users_name')->find();
+                                    echo $tabName['users_name']; ?>" data-toggle="tooltip" title="" data-placement="bottom">
+                                        <img src="__PUBLIC__/images/02_avatar_mid.jpg" alt="<?php
+								$tabid=$v1[users_id2];
+								$tmp['users_id']=$tabid;
+				 				$tabName=M('users')->where($tmp)->field('users_name')->find();
+                                    echo $tabName['users_name'];
+                                    ?>">
+                                    </a>
+
+                                </volist>
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="aw-mod people-following">
+                        <div class="mod-body">
+                            关注 <em class="aw-text-color-blue">{$num2}</em> 话题
+                            <div class="aw-topic-bar">
+                            <div class="tag-bar clearfix">
+                                <volist name="post2" id="v2">
+                                <span class="topic-tag">
+
+                                        </span>
+                                </volist> </div>
+                        </div>
+                        </div>
+                    </div>
+                    <div class="aw-mod">
+                        <div class="mod-body">
+                            <span class="aw-text-color-666">
+                                主页访问量 : 1557 次访问
+                            </span>
+                        </div>
+                    </div>
+                </div>
