@@ -1,0 +1,199 @@
+<style>
+	.list-page{padding:20px 0;text-align:center; size: 16px ;color:black}
+	.list-page a{margin:0 5px;padding:2px 7px;border:1px solid #ccc;background:#f3f3f3;}
+	.list-page a:hover{background:#e4e4e4;border:1px solid #908f8f;}
+	.list-page .current{margin:0 5px;padding:2px 7px;background: #34495e;border:1px solid #34495e;color:#fff;}
+	.list-page a:hover {
+		background: #e4e4e4;
+		border: 1px solid #0f0f0f;
+		color: #0f0e0e;
+	}
+</style>
+<div class="aw-container-wrap">
+	
+	<div class="container">
+		<div class="row">
+			<div class="aw-content-wrap clearfix">
+				<div class="col-sm-12 col-md-9 aw-main-content">
+				<div class="ad-all clearfix">
+					<div id="carousel-example" class="carousel slide" data-ride="carousel">
+     <ol class="carousel-indicators">
+       <li data-target="#carousel-example" data-slide-to="0" class="active"></li>
+       <li data-target="#carousel-example" data-slide-to="1" class=""></li>
+       <li data-target="#carousel-example" data-slide-to="2" class=""></li>
+    </ol>
+    <div class="carousel-inner">
+      <div class="item active">
+           <a href="news_content.html" target="_blank"><img alt="" src="__PUBLIC__/images/1.jpg"></a>
+         </div>
+       <div class="item">
+            <a href="news_content.html" target="_blank"><img alt="" src="__PUBLIC__/images/2.jpg"></a>
+          </div>
+        <div class="item">
+             <a href="news_content.html" target="_blank"><img alt="" src="__PUBLIC__/images/3.jpg"></a>
+         </div>
+     </div>
+    <a class="left carousel-control" href="news_content.html" data-slide="prev">
+    <span class="glyphicon glyphicon-chevron-left" style="font-size:14px;"></span></a>
+    <a class="right carousel-control" href="news_content.html" data-slide="next">
+    <span class="glyphicon glyphicon-chevron-right" style="font-size:14px;"></span></a>
+  </div>
+ <script>
+ $(function(){
+ $('.carousel').carousel();
+ });
+</script>				</div>
+				<div class="aw-mod">
+					<div class="mod-head">
+						<h2 class="lanmubiao hidden-xs"><i class="icon icon-reader"></i>　阅读</h2>
+					</div>
+					<div class="mod-body">
+						<volist name="posts" id="p">
+						<ul class="col-md-12 aw-article-list">
+								<div id="article-list_5" style="border: 1px solid #e2e2e2;padding: 10px;border-radius: 3px;display: none;">
+									<div class="mod-head" style="background:#f9f9f9;">
+										<a class="pull-right" href="javascript:;" onclick="AWS.content_switchers($(&#39;#article-list_5&#39;), $(&#39;#oarticle-list_5&#39;), $(&#39;#article-list-box_5&#39;));return false;"><i class="icon icon-delete text-color-999"></i> 关闭阅读</a>
+										<h1><a href="__APP__/home/news/news_content/id/{$p.posts_id}">【阅读】{$p.posts_title}</a></h1>
+									</div>
+									<div class="mod-body markitup-box zhankai" id="article-list-box_5" style="display:inline;">
+										<p>
+											{$p.posts_content}
+										</p>
+									</div>
+									<div class="mod-footer" style="height:30px;margin:10px 0 0 0;">
+										<span class="pull-right more-operate text-color-999 hidden-xs">   
+											<a class="text-color-999" href="http://www.tabuzhe.com/#" onclick="AWS.content_switchers($(&#39;#article-list_5&#39;), $(&#39;#oarticle-list_5&#39;), $(&#39;#article-list-box_5&#39;));return false;"><i class="icon icon-delete text-color-999"></i> 关闭阅读</a>
+										</span>
+										<span class="pull-left more-operate text-color-999 fcontribute">
+											<i class="pull-left kr"><a class="aw-user-name hidden-xs" data-id="4" href="#" rel="nofollow"><img src="__PUBLIC__<?php
+                                                $usersid=$p[users_id];
+                                                $tmp['users_id']=$usersid;
+                                                $usersName=M('users')->where($tmp)->field('users_pic')->find();
+                                                echo $usersName['users_pic'];
+                                                ?>" alt="" original="http://www.tabuzhe.com/uploads/avatar/000/00/00/04_avatar_mid.jpg"></a></i>
+											<a href="/home/list/index" class="aw-user-name"><?php
+				$tabid=$p[posts_label_id];
+				$tmp['posts_label_id']=$tabid;
+				 $tabName=M('lables')->where($tmp)->field('posts_label_name')->find();
+			echo "【".$tabName['posts_label_name']."】";
+
+			?></a> 发表于 : {$p.posts_time}&nbsp;&nbsp;
+										&nbsp;&nbsp;
+											<a class="text-color-999" href="http://www.tabuzhe.com/article/5#!answer_form"> 评论 (<?php
+	$postsid=$p['posts_id'];
+	$tmp['posts_id']=$postsid;
+	$num=M('comments')->where($tmp)->count();
+					echo $num;
+?>)</a>
+										</span>
+									</div>	
+								</div>
+								<li id="oarticle-list_5">
+																			<div class="aw-article-text col-md-4">
+																						<a href="#" target="_blank" data-fancybox-group="thumb" rel="lightbox">
+											<img class="img-polaroid kltu" src="__PUBLIC__/{$p.posts_pic}" style="opacity: 1;">
+											</a>
+										</div>
+																				<div class="col-md-8 foxo">
+											<h1>
+																						<span class="spanb_b">热</span>																						<a href="__APP__/home/news/news_content/id/{$p.posts_id}">【阅读】{$p.posts_title}</a>
+											</h1>
+											<span id="detail_5">
+											<a class="text-colors-999" href="news_content.html">
+											 {$p.posts_intr}...													</a>
+											</span>
+										</div>          
+										<div class="mod-body col-md-12 clearfix kl">
+											 <div class="mod-footer">
+												<span class="pull-right more-operate text-color-999 hidden-xs">   
+													<a href="__APP__/home/news/news_content/id/{$p.posts_id}" target="_blank" class="aw-icon-thank-tips text-color-999" data-original-title="新窗口阅读" data-toggle="tooltip" title="" data-placement="left"><i class="icon icon-share"></i> 阅读</a>
+													&nbsp;&nbsp;<a href="__APP__/home/news/news_content/id/{$p.posts_id}" onclick="AWS.content_switcher($(&#39;#oarticle-list_5&#39;), $(&#39;#article-list_5&#39;));AWS.article_read(&#39;#article-list-box_5&#39;, 5);$(&#39;#overDiv&#39;).attr(&#39;onclick&#39;, &#39;AWS.content_switcherst(5);return false;&#39;); return false;" class="aw-icon-thank-tips text-color-999" data-original-title="直接展开阅读" data-toggle="tooltip" title="" data-placement="left"><i class="icon icon-comment"></i> 展开</a>
+												</span>
+												<span class="pull-left more-operate text-color-999 fcontribute">
+													<i class="pull-left kr ptop15"><a class="aw-user-name hidden-xs" data-id="4" href="http://www.tabuzhe.com/people/yuer" rel="nofollow"><img src="__PUBLIC__/<?php
+                                                $usersid=$p[users_id];
+                                                $tmp['users_id']=$usersid;
+                                                $usersName=M('users')->where($tmp)->field('users_pic')->find();
+                                                echo $usersName['users_pic'];
+                                                ?>" alt=""></a></i>
+													<a href="__APP__/home/list/index" class="aw-user-name"><?php
+				$tabid=$p[posts_label_id];
+				$tmp['posts_label_id']=$tabid;
+				 $tabName=M('lables')->where($tmp)->field('posts_label_name')->find();
+			echo "【".$tabName['posts_label_name']."】";
+
+			?></a> 发表于 : {$p.posts_time}&nbsp;&nbsp;
+													&nbsp;
+													<a class="text-color-999" href="__APP__/home/news/news_content/id/{$p.posts_id}"> 评论 (<?php
+	$postsid=$p['posts_id'];
+	$tmp['posts_id']=$postsid;
+	$num=M('comments')->where($tmp)->count();
+					echo $num;
+?>)</a>
+													&nbsp;&nbsp;来自
+													[<a class="text-color-999" href="__APP__/home/list/index" target="_blank"><?php
+				$usersid=$p[users_id];
+				$tmp['users_id']=$usersid;
+				 $usersName=M('users')->where($tmp)->field('users_name')->find();
+																	echo $usersName['users_name'];
+
+																	?></a>]
+																									</span>
+											</div>	
+										</div>										
+								</li>								   
+							</ul>
+						</volist>
+						<div class="list-page">{$pages}</div>
+
+												</div>
+						<div class="mod-body col-md-12 clearfix">
+						<div class="mod-footer pull-right">
+													</div>
+						</div>
+										</div>
+				<!-- end 文章列表 -->
+				</div>
+				<!-- 侧边栏 -->
+				<div class="col-sm-3 col-md-3 aw-side-bar hidden-xs hidden-sm">
+					<!-- 热门文章 -->
+					<div class="aw-mod aw-text-align-justify">
+						<div class="mod-head">
+							<h3>热门文章</h3>
+						</div>
+						<div class="mod-body">
+							<ul>
+															</ul>
+						</div>
+					</div>
+					<!-- end 热门文章 -->
+					<div class="aw-mod aw-text-align-justify">
+	<div class="mod-head">
+		<a href="__APP__/home/list/index" class="pull-right">更多 &gt;</a>
+		<h3>热门圈子</h3>
+	</div>
+	<div class="mod-body">
+							</div>
+</div>
+					<div id="tabuzhead" class="hidden-xs hidden-sm">
+	<div class="tabuzheadboxs">
+		<a href="#" target="_blank"><img src="__PUBLIC__/images/AD1.jpg"></a>
+	</div>
+	<!--<div class="tabuzheadbox"></div>-->
+</div>
+<script type="text/javascript">
+$(function() {
+var fixfox="fixedff";
+var rollSet = $('#tabuzhead');// 检查对象，#sidebar-tab是要随滚动条固定的ID，可根据需要更改
+var offset = rollSet.offset();
+$(window).scroll(function () {
+// 检查对象的顶部是否在游览器可见的范围内
+var scrollTop = $(window).scrollTop();
+if(offset.top < scrollTop){
+rollSet.addClass(fixfox);
+}else{
+rollSet.removeClass(fixfox);
+}
+});
+});
+</script>				</div>

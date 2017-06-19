@@ -1,0 +1,202 @@
+<style>
+    .list-page{padding:20px 0;text-align:center; size: 16px ;color:black}
+    .list-page a{margin:0 5px;padding:2px 7px;border:1px solid #ccc;background:#f3f3f3;}
+    .list-page a:hover{background:#e4e4e4;border:1px solid #908f8f;}
+    .list-page .current{margin:0 5px;padding:2px 7px;background: #34495e;border:1px solid #34495e;color:#fff;}
+    .list-page a:hover {
+        background: #e4e4e4;
+        border: 1px solid #0f0f0f;
+        color: #0f0e0e;
+    }
+</style>
+<div class="aw-container-wrap">
+
+    <div class="container">
+        <div class="row">
+            <div class="aw-content-wrap clearfix">
+                <div class="col-sm-12 col-md-9 aw-main-content">
+                    <div class="ad-all clearfix">
+                        <div id="carousel-example" class="carousel slide" data-ride="carousel">
+                            <ol class="carousel-indicators">
+                                <li data-target="#carousel-example" data-slide-to="0" class=""></li>
+                                <li data-target="#carousel-example" data-slide-to="1" class="active"></li>
+                                <li data-target="#carousel-example" data-slide-to="2" class=""></li>
+                            </ol>
+                            <div class="carousel-inner">
+                                <div class="item">
+                                    <a href="content.html" target="_blank"><img alt="" src="__PUBLIC__/images/1.jpg"></a>
+                                </div>
+                                <div class="item active">
+                                    <a href="content.html" target="_blank"><img alt="" src="__PUBLIC__/images/2.jpg"></a>
+                                </div>
+                                <div class="item">
+                                    <a href="content.html" target="_blank"><img alt="" src="__PUBLIC__/images/3.jpg"></a>
+                                </div>
+                            </div>
+                            <a class="left carousel-control" href="content.html" data-slide="prev">
+                                <span class="glyphicon glyphicon-chevron-left" style="font-size:14px;"></span></a>
+                            <a class="right carousel-control" href="content.html" data-slide="next">
+                                <span class="glyphicon glyphicon-chevron-right" style="font-size:14px;"></span></a>
+                        </div>
+                        <script>
+                            $(function(){
+                                $('.carousel').carousel();
+                            });
+                        </script>					</div>
+                    <!-- tab切换 -->
+                    <ul class="nav nav-tabs aw-nav-tabs hidden-xs active">
+                        <li class="active"><a href="__APP__/home/list/index">等待评论</a></li>
+                        <li><a href="__APP__/home/list/index" id="sort_control_hot">热门</a></li>
+                        <li><a href="__APP__/home/list/index">推荐</a></li>
+                        <li><a href="__APP__/home/list/index">最新</a></li>
+
+                        <h2 class="hidden-xs"><i class="icon icon-wechat" style="font-size:20px;color:#000;"></i> 话题</h2>
+                    </ul>
+                    <!-- end tab切换 -->
+
+
+                    <!-- 话题列表 -->
+                    <div class="aw-mod aw-explore-list">
+                        <div class="mod-body">
+                            <div class="aw-common-list">
+                                <volist name="posts" id="p">
+                                    <div class="aw-item" id="aw-item_0">
+                                        <div class="aw-user-imgs">
+                                            <a class="aw-user-name aw-user-name-o hidden-xs" data-id="3" href="__APP__/home/personal/index2/id2/{$p[users_id]}" rel="nofollow"><img src="__PUBLIC__<?php
+                                                $usersid=$p[users_id];
+                                                $tmp['users_id']=$usersid;
+                                                $usersName=M('users')->where($tmp)->field('users_pic')->find();
+                                                echo $usersName['users_pic'];
+                                                ?>" alt=""><p><!--用户名-->
+                                                <?php
+                                                $usersid=$p[users_id];
+                                                $tmp['users_id']=$usersid;
+                                                $usersName=M('users')->where($tmp)->field('users_name')->find();
+                                                echo $usersName['users_name'];
+                                                ?>
+                                            </p><i class="icon icon-v"></i></a>	<div class="userline hidden-xs" id="userline_0"></div>
+                                        </div>
+
+                                        <div class="aw-question-content" id="aw-question-content_0">
+                                            <h4>
+                                                <span class="spanb_b">热</span>									<a href="__APP__/home/list/content/id/{$p.posts_id}">
+                                                <?php
+				$tabid=$p[posts_label_id];
+				$tmp['posts_label_id']=$tabid;
+				 $tabName=M('lables')->where($tmp)->field('posts_label_name')->find();
+                                                echo "【".$tabName['posts_label_name']."】";
+
+                                                ?>
+
+                                                {$p.posts_title}</a>
+                                            </h4>
+                                            <div class="inner clearfix">
+                                                <div class="inner clearfix question-text" style="color: #666; font-size:13px;">
+                                                    {$p.posts_intr}		</div>
+                                                <div class="inner clearfix">
+                                                    <a href="__APP__/home/personal/index2/id2/{$p[users_id]}" class="aw-user-name">
+                                                        <!--用户名-->	<?php
+				$usersid=$p[users_id];
+				$tmp['users_id']=$usersid;
+				 $usersName=M('users')->where($tmp)->field('users_name')->find();
+                                                        echo $usersName['users_name'];
+
+                                                        ?></a>
+                                                    <span class="text-color-999">发起了话题 o 1 人关注 o 0 个评论 o 1546 次浏览 {$p.view_num} {$p.posts_time}
+				</span>
+                                                    <span class="pull-right hidden-xs contribute text-color-999">
+				<a href="__APP__/home/list/content/id/{$p.posts_id}" class="pull-right aw-icon-thank-tips text-color-999" data-original-title="评论" data-toggle="tooltip" title="" data-placement="bottom">评论 <i class="icon icon-comment"></i></a>
+				</span>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </volist>
+                                <div class="list-page">{$pages}</div>
+
+                            </div>
+                        </div>
+                    </div>
+                    <!-- end 话题列表 -->
+
+                    <div class="mod-body col-md-12 clearfix">
+                        <div class="mod-footer pull-right">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 侧边栏 -->
+                <div class="col-sm-12 col-md-3 aw-side-bar hidden-xs hidden-sm">
+                    <div class="aw-mod aw-text-align-justify">
+                        <div class="mod-head">
+                            <a href="__APP__/home/list/index" class="pull-right">更多 &gt;</a>
+                            <h3>热门圈子</h3>
+                        </div>
+                        <div class="mod-body">
+                        </div>
+                    </div>
+                    <div class="aw-mod aw-text-align-justify">
+                    </div>
+                    <div class="aw-mod aw-text-align-justify">
+                        <div class="mod-head">
+                            <a href="__APP__/home/list/index" class="pull-right">更多 &gt;</a>
+                            <h3>热门用户</h3>
+                        </div>
+                        <div class="mod-body">
+                        </div>
+                    </div>										<div class="aw-mod aw-text-align-justify" id="saybox">
+                </div>
+                    <script type="text/javascript">
+                        $(function(){
+                            var scrtime;
+                            $("#quotation").hover(function(){
+                                clearInterval(scrtime);
+
+                            },function(){
+
+                                scrtime = setInterval(function(){
+                                    var obj = $('#quotation ul li').last();
+                                    obj.hide();
+                                    $('#quotation ul').prepend(obj);
+                                    $('#quotation ul li').first().slideDown(500);
+                                },5000);
+
+                            }).trigger("mouseleave");
+
+                            var fixfox="fixedffs";
+                            var rollSet = $('#saybox');// 检查对象，#sidebar-tab是要随滚动条固定的ID，可根据需要更改
+                            var offset = rollSet.offset();
+                            $(window).scroll(function () {
+// 检查对象的顶部是否在游览器可见的范围内
+                                var scrollTop = $(window).scrollTop();
+                                if(offset.top < scrollTop && $(document).scrollTop() + $(window).height() < $(document).height()){
+                                    rollSet.addClass(fixfox);
+                                }else{
+                                    rollSet.removeClass(fixfox);
+                                }
+                            });
+                        });
+                    </script>					<div id="tabuzhead" class="hidden-xs hidden-sm fixedff">
+                    <div class="tabuzheadboxs">
+                        <a target="_blank"><img src="__PUBLIC__/images/AD1.jpg"></a>
+                    </div>
+                    <!--<div class="tabuzheadbox"></div>-->
+                </div>
+                    <script type="text/javascript">
+                        $(function() {
+                            var fixfox="fixedff";
+                            var rollSet = $('#tabuzhead');// 检查对象，#sidebar-tab是要随滚动条固定的ID，可根据需要更改
+                            var offset = rollSet.offset();
+                            $(window).scroll(function () {
+// 检查对象的顶部是否在游览器可见的范围内
+                                var scrollTop = $(window).scrollTop();
+                                if(offset.top < scrollTop + 380){
+                                    rollSet.addClass(fixfox);
+                                }else{
+                                    rollSet.removeClass(fixfox);
+                                }
+                            });
+                        });
+                    </script>				</div>
+                <!-- end 侧边栏 -->
