@@ -1,0 +1,129 @@
+
+<div class="aw-container-wrap">
+    <div class="container">
+        <div class="row">
+            <div class="aw-content-wrap clearfix">
+                <div class="col-sm-12 col-md-9 aw-main-content">
+                    <!-- 圈子推荐bar -->
+                    <!-- 圈子推荐bar -->
+                    <!-- 圈子bar -->
+                    <div class="aw-mod aw-topic-bar" id="question_topic_editor" data-type="question" data-id="3">
+                        <div class="tag-bar clearfix">
+                            <a id="fontsize" class="pull-left">A+</a>
+                        </div>
+                    </div>
+                    <!-- end 圈子bar -->
+                    <div class="aw-mod aw-question-detail aw-item">
+                        <div class="mod-head">
+                            <div class="biaoboxs pull-right hidden-xs">
+                            </div>
+                            <h1>
+                                <span class="font24">【阅读】{$content.posts_title}</span>
+                            </h1>
+
+                        </div>
+                        <div class="mod-body">
+                            <!--<link href="./鬼吹灯之精绝古城全集1080ped2k百度云网盘解压密码 - TABUZHE_files/prettify.css" rel="stylesheet" type="text/css">-->
+                            <script src="__PUBLIC__/js/prettify.js" type="text/javascript"></script>
+                            <div id="content-fox" class="content markitup-box font18 line-bigs">
+                                {$content.posts_intr} <br>
+                                <br>
+                                <div class="aw-upload-img-list active">
+                                    <a href="__PUBLIC__/images/4e8ddc4be6f41e08f6141f8a25d43580.jpg" target="_blank" data-fancybox-group="thumb" rel="lightbox"><img src="__PUBLIC__/images/161459zbs85ddtegg88lso.png" class="img-polaroid" title="6316f93a-5c12-4d3e-a5ba-405ec33295d3.jpg" alt="6316f93a-5c12-4d3e-a5ba-405ec33295d3.jpg" original="http://www.tabuzhe.com/uploads/questions/20161224/4e8ddc4be6f41e08f6141f8a25d43580.jpg"></a>
+                                </div>
+                                <br>
+                                <br>
+                                {$content.posts_content}
+                                <div class="aw-upload-img-list">
+                                </div>
+                            </div>
+                            <div class="aw-mod aw-upload-file-list">
+                                <!-- <div class="mod-head">
+                                    <h3><i class="icon icon-attach"></i> 附件 :</h3>
+                                </div> -->
+                                <div class="mod-body">
+                                    <ul>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="mod-footer">
+                            <div class="meta">
+                                <span class="text-color-999">{$content.posts_time}</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- 侧边栏 -->
+                <div class="col-md-3 aw-side-bar hidden-xs hidden-sm">
+                    <!-- 发起人 -->
+                    <div class="aw-mod">
+                        <div class="mod-head">
+                            <h3>发起人</h3>
+                        </div>
+                        <div class="mod-body">
+                            <dl>
+                                <dt class="pull-left aw-border-radius-5">
+                                    <a href="__APP__/home/persona/index"><img alt="埃菲尔铁塔" src="__PUBLIC__/images/03_avatar_mid.jpg"></a>
+                                </dt>
+                                <dd class="pull-left">
+                                    <a class="aw-user-name" href="__APP__/home/persona/index"><?php
+				$usersid=$content[users_id];
+				$tmp['users_id']=$usersid;
+				 $usersName=M('users')->where($tmp)->field('users_name')->find();
+                                        echo $usersName['users_name'];
+
+                                        ?></a>
+
+                                    <p></p>
+                                </dd>
+                            </dl>
+                            <ul style="font-size:12px;">
+                                <li> 发帖数量 : <em class="aw-text-color-orange"><?php
+				$usersid=$content[users_id];
+				$tmp['users_id']=$usersid;
+				 $usersSum=M('users')->where($tmp)->field('users_sum')->find();
+                                    echo $usersSum['users_sum'];
+
+                                    ?></em></li>
+                                <li> 评论数量 : <em class="aw-text-color-orange"><?php
+				$usersid=$content[users_id];
+				$tmp['users_id']=$usersid;
+				 $usersComment=M('users')->where($tmp)->field('users_comment')->find();
+                                    echo $usersComment['users_comment'];
+
+                                    ?></em></li>
+                                <li> 积分 : <em class="aw-text-color-orange"><?php
+				$usersid=$content[users_id];
+				$tmp['users_id']=$usersid;
+				 $usersComment=M('users')->where($tmp)->field('users_comment')->find();
+                                    echo $usersComment['users_comment'];
+
+                                    ?></em></li>
+                                <li> 粉丝 : <em class="aw-text-color-orange">0</em></li>
+                                <li> 签到 : <em class="aw-text-color-orange">3</em></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <!-- end 发起人 -->
+                    <!-- 问题状态 -->
+                    <div class="aw-mod question-status">
+                        <div class="mod-head">
+                            <h3>话题状态</h3>
+                        </div>
+                        <div class="mod-body">
+                            <ul>
+                                <li>最新活动: <span class="aw-text-color-blue">2016-12-24 10:45</span></li>
+                                <li>浏览: <span class="aw-text-color-blue">1531</span></li>
+                                <li>关注: <span class="aw-text-color-blue">1</span> 人</li>
+
+                                <li class="aw-border-radius-5" id="focus_users"><a href="http://www.tabuzhe.com/people/aifeiertieta20161203"><img src="__PUBLIC__/images/03_avatar_mid.jpg" class="aw-user-name" data-id="3" alt="埃菲尔铁塔"></a> </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <!-- end 问题状态 -->
+
+
+
+
+                </div>
